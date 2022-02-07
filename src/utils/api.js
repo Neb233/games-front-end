@@ -10,10 +10,12 @@ export const getCategories = () => {
   });
 };
 
-export const getReviews = () => {
-  return gamesApi.get("/reviews").then((res) => {
-    return res.data.reviews;
-  });
+export const getReviews = (category, order, sort_by) => {
+  return gamesApi
+    .get("/reviews", { params: { limit: 100, category: category } })
+    .then((res) => {
+      return res.data.reviews;
+    });
 };
 
 export const getReviewById = (review_id) => {
@@ -36,7 +38,7 @@ export const patchReviewVotes = (review_id, request) => {
       return res.review;
     });
 };
-export const postNewComment = (review_id) => {
+export const postNewComment = (review_id, request) => {
   return gamesApi
     .post(`/review/${review_id}`)
     .send(request)

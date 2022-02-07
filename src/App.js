@@ -1,24 +1,46 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { useState, useEffect } from "react";
+import Home from "./components/home";
+import Header from "./components/header";
+import { getReviews, getCategories } from "./utils/api";
+import NavBar from "./components/Nav";
+import { useParams } from "react-router-dom";
 
 function App() {
+  const [reviews, setReviews] = useState([]);
+  const [categories, setCategories] = useState([]);
+  const { category } = useParams();
+  useEffect(() => {
+    console.log(category);
+    getReviews(category).then((reviews) => {
+      setReviews(reviews);
+    });
+  }, [category]);
+  useEffect(() => {
+    getCategories().then((categories) => {
+      setCategories(categories);
+    });
+  });
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <div className="App">
+        <Header />
+        <NavBar categories={categories} setCategories={setCategories} />
+        <Routes>
+          <Route
+            path="/"
+            element={<Home reviews={reviews} setReviews={setReviews} />}
+          ></Route>
+          <Route
+            path="/reviews/:category"
+            element={<Home reviews={reviews} setReviews={setReviews} />}
+          >
+            {" "}
+          </Route>
+        </Routes>
+      </div>
+    </BrowserRouter>
   );
 }
 
