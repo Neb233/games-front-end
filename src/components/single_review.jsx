@@ -5,8 +5,8 @@ import { getReviewById, getCommentsByReviewId } from "../utils/api";
 
 const SingleReview = () => {
   const { review_id } = useParams();
-  const { review, setReview } = useState();
-  const { comments, setComments } = useState();
+  const [review, setReview] = useState({});
+  const [comments, setComments] = useState([]);
   useEffect(() => {
     getReviewById(review_id).then((review) => {
       console.log(review);
@@ -17,7 +17,7 @@ const SingleReview = () => {
     getCommentsByReviewId(review_id).then((comments) => {
       setComments(comments);
     });
-  });
+  }, []);
   return (
     <main>
       <div>

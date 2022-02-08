@@ -8,7 +8,6 @@ import NavBar from "./components/Nav";
 import SingleReview from "./components/single_review";
 
 function App() {
-  const [reviews, setReviews] = useState([]);
   const [categories, setCategories] = useState([]);
 
   useEffect(() => {
@@ -22,14 +21,8 @@ function App() {
         <Header />
         <NavBar categories={categories} setCategories={setCategories} />
         <Routes>
-          <Route
-            path="/"
-            element={<Home reviews={reviews} setReviews={setReviews} />}
-          ></Route>
-          <Route
-            path="/reviews/:category"
-            element={<Home reviews={reviews} setReviews={setReviews} />}
-          >
+          <Route path="/" element={<Home />}></Route>
+          <Route path="/reviews" element={<Home />}>
             {" "}
           </Route>
           <Route path="/reviews/:review_id" element={<SingleReview />}></Route>

@@ -1,9 +1,19 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { useParams } from "react-router-dom";
+import { useSearchParams } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { getReviews } from "../utils/api";
 
-const ReviewList = ({ reviews }) => {
-  const { category } = useParams();
+const ReviewList = () => {
+  const [searchParams, setSearchParams] = useSearchParams();
+  const [reviews, setReviews] = useState([]);
+  const category = searchParams.get("category");
+  useEffect(() => {
+    getReviews(category).then((reviews) => {
+      setReviews(reviews);
+    });
+  }, [category]);
   return (
     <main>
       <h2>{category ? category : "All Games"}</h2>

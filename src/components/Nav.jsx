@@ -6,7 +6,7 @@ const NavBar = ({ categories }) => {
     <nav className="nav">
       {categories.map((category) => {
         return (
-          <Link key={category.slug} to={`/reviews/${category.slug}`}>
+          <Link key={category.slug} to={`/reviews?category=${category.slug}`}>
             {category.slug}{" "}
           </Link>
         );
