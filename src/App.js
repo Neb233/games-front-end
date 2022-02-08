@@ -3,25 +3,19 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { useState, useEffect } from "react";
 import Home from "./components/home";
 import Header from "./components/header";
-import { getReviews, getCategories } from "./utils/api";
+import { getCategories } from "./utils/api";
 import NavBar from "./components/Nav";
-import { useParams } from "react-router-dom";
+import SingleReview from "./components/single_review";
 
 function App() {
   const [reviews, setReviews] = useState([]);
   const [categories, setCategories] = useState([]);
-  const { category } = useParams();
-  useEffect(() => {
-    console.log(category);
-    getReviews(category).then((reviews) => {
-      setReviews(reviews);
-    });
-  }, [category]);
+
   useEffect(() => {
     getCategories().then((categories) => {
       setCategories(categories);
     });
-  });
+  }, []);
   return (
     <BrowserRouter>
       <div className="App">
@@ -38,6 +32,7 @@ function App() {
           >
             {" "}
           </Route>
+          <Route path="/reviews/:review_id" element={<SingleReview />}></Route>
         </Routes>
       </div>
     </BrowserRouter>
