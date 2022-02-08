@@ -6,7 +6,7 @@ const ReviewList = ({ reviews }) => {
   const { category } = useParams();
   return (
     <main>
-      <h2>{category ? category : "All Reviews"}</h2>
+      <h2>{category ? category : "All Games"}</h2>
       <ul className="reviewslist">
         {reviews.map((review) => {
           return (
@@ -31,7 +31,12 @@ const ReviewList = ({ reviews }) => {
                     <p>{review.created_at}</p>
                     <img
                       className="reviewthumbnail"
-                      src={review.review_img_url}
+                      src={
+                        review.review_img_url
+                          ? review.review_img_url
+                          : "../../placeholder.png"
+                      }
+                      alt=""
                     />
                   </li>
                 </Link>
