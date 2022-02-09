@@ -1,5 +1,25 @@
 .avatarurl {
   border-radius: 50%;
-  width: 50px;
+  width: 30px;
+  height: 30px;
+}
+.header_container {
   height: 50px;
+  width: 100%;
+  background-color: white;
+  display: flex;
+  align-items: center;
+  position: sticky;
+  top: 0;
+}
+
+.header_left {
+  flex: 3;
+}
+
+.header_middle {
+  flex: 4;
+}
+.header_right {
+  flex: 3;
 }

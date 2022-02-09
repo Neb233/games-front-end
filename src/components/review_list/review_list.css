@@ -8,7 +8,20 @@
 .reviewbox {
   border: 2px groove rgb(12, 104, 243);
   margin: 10px;
+  grid-area: Review;
 }
 .reviewslist {
   list-style: none;
+}
+
+.votebox {
+  grid-area: Votes;
+  justify-content: center;
+}
+.reviewcontainer {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr;
+  gap: 0px 0px;
+  grid-template-areas: "Review Votes";
 }

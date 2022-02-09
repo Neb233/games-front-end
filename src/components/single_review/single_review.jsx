@@ -2,7 +2,11 @@ import React from "react";
 import { useParams } from "react-router-dom";
 import { useState, useEffect, useContext } from "react";
 import { UserContext } from "../../userContext";
-import { getReviewById, getCommentsByReviewId } from "../../utils/api";
+import {
+  getReviewById,
+  getCommentsByReviewId,
+  deleteComment,
+} from "../../utils/api";
 import CommentBox from "../commentbox/commentbox";
 import "../single_review/single_review.css";
 const SingleReview = () => {
@@ -10,6 +14,22 @@ const SingleReview = () => {
   const { review_id } = useParams();
   const [review, setReview] = useState({});
   const [comments, setComments] = useState([]);
+
+  const onDelete = (comment_id) => {
+    deleteComment(comment_id)
+      .then((res) => {
+        const newComments = comments.map((comment) => {
+          return { ...comment };
+        });
+        const updatedComments = newComments.filter((comment) => {
+          return comment.comment_id != comment_id;
+        });
+        setComments(updatedComments);
+      })
+      .catch((err) => {
+        console.log(err.response.data);
+      });
+  };
   useEffect(() => {
     getReviewById(review_id).then((review) => {
       setReview(review);
@@ -41,7 +61,11 @@ const SingleReview = () => {
           alt=""
         />
         <p>{review.created_at}</p>
-        <CommentBox review={review} />
+        <CommentBox
+          review={review}
+          comments={comments}
+          setComments={setComments}
+        />
       </div>
       <div>
         <h2>
@@ -66,7 +90,17 @@ const SingleReview = () => {
                     <h3>{comment.author}</h3>
                     <p>{comment.body}</p>
                     <p>{comment.created_at}</p>
-                    <button>Delete</button>
+                    {comment.author === user.username ? (
+                      <button
+                        type="button"
+                        className="deletebutton"
+                        onClick={() => {
+                          onDelete(comment.comment_id);
+                        }}
+                      >
+                        Delete
+                      </button>
+                    ) : null}
                   </li>
                 </div>
               </>

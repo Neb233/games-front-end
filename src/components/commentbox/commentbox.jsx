@@ -7,7 +7,7 @@ import { postNewComment } from "../../utils/api";
 
 const INITIAL_HEIGHT = 24;
 
-const CommentBox = ({ review }) => {
+const CommentBox = ({ review, comments, setComments }) => {
   const [isExpanded, setIsExpanded] = useState(false);
   const [commentValue, setCommentValue] = useState("");
   const { user } = useContext(UserContext);
@@ -45,6 +45,12 @@ const CommentBox = ({ review }) => {
     })
       .then((res) => {
         setCommentValue("");
+
+        const newComments = comments.map((comment) => {
+          return { ...comment };
+        });
+        newComments.push(res);
+        setComments(newComments);
       })
       .catch((err) => {
         console.log(err.response.data);

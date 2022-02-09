@@ -22,7 +22,6 @@ const Header = () => {
         {user.username ? (
           <div className="logginInfo">
             <img className="avatarurl" src={user.avatar_url} />
-            <p>Logged in as: {user.username}</p>
           </div>
         ) : (
           <button
