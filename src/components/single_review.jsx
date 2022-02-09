@@ -1,15 +1,16 @@
 import React from "react";
 import { useParams } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
+import { UserContext } from "../userContext";
 import { getReviewById, getCommentsByReviewId } from "../utils/api";
 
 const SingleReview = () => {
+  const { user, setUser } = useContext(UserContext);
   const { review_id } = useParams();
   const [review, setReview] = useState({});
   const [comments, setComments] = useState([]);
   useEffect(() => {
     getReviewById(review_id).then((review) => {
-      console.log(review);
       setReview(review);
     });
   }, []);
@@ -30,6 +31,7 @@ const SingleReview = () => {
         <h3>{review.votes}</h3>
         <p>{review.body}</p>
         <img
+          className="reviewimage"
           src={
             review.review_img_url
               ? review.review_img_url
@@ -38,7 +40,10 @@ const SingleReview = () => {
           alt=""
         />
         <p>{review.created_at}</p>
-        <button>Post Comment</button>
+        <form>
+          <input type="text"></input>
+          <input type="submit"></input>
+        </form>
       </div>
       <div>
         <h2>{review.commment_count}</h2>
