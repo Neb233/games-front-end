@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import { useState, useEffect, useContext } from "react";
 import { UserContext } from "../userContext";
 import { getReviewById, getCommentsByReviewId } from "../utils/api";
+import CommentBox from "./commentbox";
 
 const SingleReview = () => {
   const { user, setUser } = useContext(UserContext);
@@ -40,10 +41,7 @@ const SingleReview = () => {
           alt=""
         />
         <p>{review.created_at}</p>
-        <form>
-          <input type="text"></input>
-          <input type="submit"></input>
-        </form>
+        <CommentBox />
       </div>
       <div>
         <h2>{review.commment_count}</h2>
