@@ -2,11 +2,11 @@ import "./App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { UserContext } from "./userContext";
-import Header from "./components/header";
+import Header from "./components/header/header";
 import { getCategories } from "./utils/api";
-import NavBar from "./components/Nav";
-import SingleReview from "./components/single_review";
-import ReviewList from "./components/review_list";
+import NavBar from "./components/Nav/Nav";
+import SingleReview from "./components/single_review/single_review";
+import ReviewList from "./components/review_list/review_list";
 import LoginPage from "./components/login_page";
 
 function App() {

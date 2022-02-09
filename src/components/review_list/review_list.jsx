@@ -2,7 +2,8 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { useSearchParams } from "react-router-dom";
 import { useState, useEffect, useContext } from "react";
-import { getReviews } from "../utils/api";
+import { getReviews } from "../../utils/api";
+import "../review_list/review_list.css";
 
 const ReviewList = () => {
   const [searchParams, setSearchParams] = useSearchParams();
