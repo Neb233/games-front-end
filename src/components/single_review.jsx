@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import { useState, useEffect, useContext } from "react";
 import { UserContext } from "../userContext";
 import { getReviewById, getCommentsByReviewId } from "../utils/api";
-import CommentBox from "./commentbox";
+import CommentBox from "./commentbox/commentbox";
 
 const SingleReview = () => {
   const { user, setUser } = useContext(UserContext);

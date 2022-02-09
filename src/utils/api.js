@@ -36,7 +36,6 @@ export const patchReviewVotes = (review_id, request) => {
   });
 };
 export const postNewComment = (review_id, request) => {
-  console.log(review_id);
   return gamesApi
     .post(`/reviews/${review_id}/comments`, request)
     .then((res) => {

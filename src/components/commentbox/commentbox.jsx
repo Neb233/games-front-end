@@ -1,8 +1,9 @@
+import "../commentbox/commentbox.css";
 import React, { useState, useRef, useContext } from "react";
-import { UserContext } from "../userContext";
+import { UserContext } from "../../userContext";
 import cn from "classnames";
-import useDynamicHeightField from "../utils/useDynamicHeightField";
-import { postNewComment } from "../utils/api";
+import useDynamicHeightField from "../../utils/useDynamicHeightField";
+import { postNewComment } from "../../utils/api";
 
 const INITIAL_HEIGHT = 24;
 
@@ -43,7 +44,7 @@ const CommentBox = ({ review }) => {
       body: commentValue,
     })
       .then((res) => {
-        console.log(res);
+        setCommentValue("");
       })
       .catch((err) => {
         console.log(err.response.data);
