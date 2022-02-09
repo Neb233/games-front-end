@@ -2,10 +2,11 @@ import React, { useState, useRef, useContext } from "react";
 import { UserContext } from "../userContext";
 import cn from "classnames";
 import useDynamicHeightField from "../utils/useDynamicHeightField";
+import { postNewComment } from "../utils/api";
 
 const INITIAL_HEIGHT = 24;
 
-const CommentBox = () => {
+const CommentBox = ({ review }) => {
   const [isExpanded, setIsExpanded] = useState(false);
   const [commentValue, setCommentValue] = useState("");
   const { user } = useContext(UserContext);
@@ -34,7 +35,19 @@ const CommentBox = () => {
 
   const onSubmit = (e) => {
     e.preventDefault();
-    console.log("send the form data somewhere");
+    if (!user.username) {
+      return;
+    }
+    postNewComment(review.review_id, {
+      username: user.username,
+      body: commentValue,
+    })
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => {
+        console.log(err.response.data);
+      });
   };
 
   return (
@@ -75,7 +88,7 @@ const CommentBox = () => {
             Cancel
           </button>
           <button type="submit" disabled={commentValue.length < 1}>
-            Respond
+            Comment
           </button>
         </div>
       </form>

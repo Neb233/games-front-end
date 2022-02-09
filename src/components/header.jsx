@@ -5,20 +5,27 @@ import { UserContext } from "../userContext";
 const Header = () => {
   const { user, setUser } = useContext(UserContext);
   return (
-    <>
-      <div>
+    <div className="header_container">
+      <div className="header_left">
         <Link to="/">
-          <h1>NC Games</h1>
+          <span>NC Games</span>
         </Link>
       </div>
-      <div>
+      <div className="header_middle">
+        <div className="searchbar">
+          {/* <SearchIcon className="searchIcon" /> */}
+          <input placeholder="search reviews..." />
+        </div>
+      </div>
+      <div className="header_right">
         {user.username ? (
-          <>
+          <div className="logginInfo">
             <img className="avatarurl" src={user.avatar_url} />
             <p>Logged in as: {user.username}</p>
-          </>
+          </div>
         ) : (
           <button
+            className="loginbutton"
             onClick={() => {
               setUser({
                 username: "grumpy19",
@@ -32,7 +39,7 @@ const Header = () => {
           </button>
         )}
       </div>
-    </>
+    </div>
   );
 };
 export default Header;

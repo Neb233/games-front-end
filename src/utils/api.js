@@ -31,19 +31,16 @@ export const getCommentsByReviewId = (review_id) => {
 };
 
 export const patchReviewVotes = (review_id, request) => {
-  return gamesApi
-    .patch(`/reviews/${review_id}`)
-    .send(request)
-    .then((res) => {
-      return res.review;
-    });
+  return gamesApi.patch(`/reviews/${review_id}`, request).then((res) => {
+    return res.data.review;
+  });
 };
 export const postNewComment = (review_id, request) => {
+  console.log(review_id);
   return gamesApi
-    .post(`/review/${review_id}`)
-    .send(request)
+    .post(`/reviews/${review_id}/comments`, request)
     .then((res) => {
-      return res.comment;
+      return res.data.comment;
     });
 };
 export const deleteComment = (comment_id) => {

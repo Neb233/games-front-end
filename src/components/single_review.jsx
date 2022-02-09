@@ -41,24 +41,27 @@ const SingleReview = () => {
           alt=""
         />
         <p>{review.created_at}</p>
-        <CommentBox />
+        <CommentBox review={review} />
       </div>
       <div>
-        <h2>{review.commment_count}</h2>
+        <h2>
+          <span>{comments.length}</span> Comment
+          {comments.length === 1 ? "" : "s"}
+        </h2>
       </div>
+      {comments.length === 0 ? <div>Be the first to comment</div> : null}
       <div>
         <ul className="commentslist">
           {comments.map((comment) => {
             return (
               <>
-                <div>
+                <div className="commentcomponent">
                   <li className="votebox">
                     <button>Up</button>
                     <h3>{comment.votes}</h3>
                     <button>Down</button>
                   </li>
-                </div>
-                <div>
+
                   <li key={comment.comment_id} className="commentbox">
                     <h3>{comment.author}</h3>
                     <p>{comment.body}</p>
