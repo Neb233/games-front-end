@@ -11,19 +11,41 @@ const ReviewList = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const [reviews, setReviews] = useState([]);
   const [ isLoading, setIsLoading ] = useState(true)
-  const [ sortBy, setSortyBy ] = useState("")
+  const [ sortBy, setSortBy ] = useState("")
+  const [ order, setOrder ] = useState("desc")
 
   const category = searchParams.get("category");
 
   useEffect(() => {
-    getReviews(category, sortBy).then((reviews) => {
+    getReviews(category, sortBy, order).then((reviews) => {
       setReviews(reviews);
     });
-  }, [category]);
+  }, [category, sortBy, order]);
   return (
     <main>
       <h2 className="dynamicheader">{category ? category : "All Games"}</h2>
-      {/* <nav><button onClick={() => setSortyBy("") }></button></nav> */}
+      <nav>{order === "asc" ? (<button onClick={() => {
+        setSortBy("votes")
+        setOrder("desc")
+        
+        }  }>Votes ⇩</button> ) : <button onClick={() => {
+          setSortBy("votes")
+          setOrder("asc")
+   
+          }  }>Votes ⇧</button>}
+
+      {order === "asc" ? (<button onClick={() => {
+        setSortBy("created_at")
+        setOrder("desc")
+      }  }>Date ⇩</button> ) : <button onClick={() => {
+        setSortBy("created_at")
+        setOrder("asc")
+      }  }>Date ⇧</button>}
+
+
+      </nav>
+
+    {/* comments, votes, dates */}
       <ul className="reviewslist">
         {reviews.map((review) => {
           return <ReviewCard review={review} />

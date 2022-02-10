@@ -10,9 +10,18 @@ export const getCategories = () => {
   });
 };
 
-export const getReviews = (category, order, sort_by) => {
+export const getReviews = (category, sort_by, order) => {
+  let path = "/reviews"
+  if(order) {
+    path += `?order=${order}`
+  }
+  if(sort_by && order) {
+    path += `&sort_by=${sort_by}`
+  }
+  
+  console.log(path)
   return gamesApi
-    .get("/reviews", { params: { limit: 100, category: category } })
+    .get(path, { params: { limit: 100, category: category } })
     .then((res) => {
       return res.data.reviews;
     });
