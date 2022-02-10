@@ -24,7 +24,9 @@ const ReviewList = () => {
   return (
     <main>
       <h2 className="dynamicheader">{category ? category : "All Games"}</h2>
-      <nav>{order === "asc" ? (<button onClick={() => {
+      <div>
+     
+      <nav className="sortbybuttons">{order === "asc" ? (<button onClick={() => {
         setSortBy("votes")
         setOrder("desc")
         
@@ -44,7 +46,8 @@ const ReviewList = () => {
 
 
       </nav>
-
+      
+      </div>
     {/* comments, votes, dates */}
       <ul className="reviewslist">
         {reviews.map((review) => {

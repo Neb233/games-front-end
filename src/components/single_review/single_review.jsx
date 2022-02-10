@@ -8,6 +8,8 @@ import {
   deleteComment,
 } from "../../utils/api";
 import CommentBox from "../commentbox/commentbox";
+import Expandable from "../expandablecomments/expandablecomments"
+import CommentsList from "../comments_list/comments_list"
 import "../single_review/single_review.css";
 const SingleReview = () => {
   const { user, setUser } = useContext(UserContext);
@@ -32,7 +34,7 @@ const SingleReview = () => {
   };
   useEffect(() => {
     getReviewById(review_id).then((review) => {
-      console.log(review)
+ 
       setReview(review);
     });
   }, []);
@@ -42,7 +44,7 @@ const SingleReview = () => {
     });
   }, []);
   return (
-    <main>
+    <>
       <div>
         <h2 className="reviewtitle">{review.title}</h2>
       </div>
@@ -75,7 +77,10 @@ const SingleReview = () => {
         </h2>
       </div>
       {comments.length === 0 ? <div>Be the first to comment</div> : null}
+
+
       <div>
+        
         <ul className="commentslist">
           {comments.map((comment) => {
             return (
@@ -108,8 +113,10 @@ const SingleReview = () => {
             );
           })}
         </ul>
+       
       </div>
-    </main>
+      
+    </>
   );
 };
 

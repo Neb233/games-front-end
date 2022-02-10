@@ -19,7 +19,7 @@ export const getReviews = (category, sort_by, order) => {
     path += `&sort_by=${sort_by}`
   }
   
-  console.log(path)
+
   return gamesApi
     .get(path, { params: { limit: 100, category: category } })
     .then((res) => {
