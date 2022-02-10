@@ -14,15 +14,17 @@ const NavBar = ({ categories }) => {
   // });
   // console.log(capitalizedCategories);
   return (
-    <nav className="nav">
+
+    <nav className="categorynav">
       {categories.map((category) => {
         return (
           <Link key={category.slug} to={`/reviews?category=${category.slug}`}>
-            <h4 className="category">{category.slug} </h4>
+           {category.slug}
           </Link>
         );
       })}
-    </nav>
+</nav>
+
   );
 };
 
