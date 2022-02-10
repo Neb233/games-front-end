@@ -41,7 +41,7 @@ const CommentBox = ({ review, comments, setComments }) => {
     }
     postNewComment(review.review_id, {
       username: user.username,
-      body: commentValue,
+      body: commentValue
     })
       .then((res) => {
         setCommentValue("");

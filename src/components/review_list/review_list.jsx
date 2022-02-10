@@ -2,8 +2,9 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { useSearchParams } from "react-router-dom";
 import { useState, useEffect, useContext } from "react";
-import { getReviews } from "../../utils/api";
+import { getReviews, patchReviewVotes } from "../../utils/api";
 import "../review_list/review_list.css";
+
 
 const ReviewList = () => {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -16,22 +17,22 @@ const ReviewList = () => {
   }, [category]);
   return (
     <main>
-      <h2>{category ? category : "All Games"}</h2>
+      <h2 className="dynamicheader">{category ? category : "All Games"}</h2>
       <ul className="reviewslist">
         {reviews.map((review) => {
           return (
             <div className="reviewcontainer">
               <li key={review.title} className="votebox">
-                <button>Up</button>
+                <button>Like</button>
                 <h3>{review.votes}</h3>
-                <button>Down</button>
+                
               </li>
 
               <Link key={review.review_id} to={`/reviews/${review.review_id}`}>
                 <li key={review.review_id} className="reviewbox">
                   <h3>Title: {review.title}</h3>
-                  <h3>Category: {review.category}</h3>
-                  <h3>Owner: {review.owner}</h3>
+                  <p>Category: {review.category}</p>
+                  <p>Owner: {review.owner}</p>
                   <p>{review.created_at}</p>
                   <img
                     className="reviewthumbnail"

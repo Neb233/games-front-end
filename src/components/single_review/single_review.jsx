@@ -22,7 +22,7 @@ const SingleReview = () => {
           return { ...comment };
         });
         const updatedComments = newComments.filter((comment) => {
-          return comment.comment_id != comment_id;
+          return comment.comment_id !== comment_id;
         });
         setComments(updatedComments);
       })
@@ -32,6 +32,7 @@ const SingleReview = () => {
   };
   useEffect(() => {
     getReviewById(review_id).then((review) => {
+      console.log(review)
       setReview(review);
     });
   }, []);
@@ -50,7 +51,7 @@ const SingleReview = () => {
         <h3>{review.owner}</h3>
         <h3>{review.designer}</h3>
         <h3>{review.votes}</h3>
-        <p>{review.body}</p>
+        <p>{review.review_body}</p>
         <img
           className="reviewimage"
           src={
@@ -81,9 +82,9 @@ const SingleReview = () => {
               <>
                 <div className="commentcomponent">
                   <li className="votebox">
-                    <button>Up</button>
+                    <button>Like</button>
                     <h3>{comment.votes}</h3>
-                    <button>Down</button>
+                  
                   </li>
 
                   <li key={comment.comment_id} className="commentbox">

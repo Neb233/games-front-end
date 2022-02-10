@@ -13,6 +13,9 @@
 .reviewslist {
   list-style: none;
 }
+.dynamicheader {
+  text-transform: capitalize;
+}
 
 .votebox {
   grid-area: Votes;
