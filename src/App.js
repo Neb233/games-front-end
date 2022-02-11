@@ -7,11 +7,13 @@ import { getCategories } from "./utils/api";
 import NavBar from "./components/Nav/Nav";
 import SingleReview from "./components/single_review/single_review";
 import ReviewList from "./components/review_list/review_list";
-import LoginPage from "./components/login_page";
+import UseFullPageLoader from "../src/utils/useFullPageLoader";
+
 import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 function App() {
   const [categories, setCategories] = useState([]);
   const [user, setUser] = useState({});
+  // const [Loader, showloader, hideloader] = UseFullPageLoader();
 
   useEffect(() => {
     getCategories().then((categories) => {
@@ -33,10 +35,10 @@ function App() {
               path="/reviews/:review_id"
               element={<SingleReview />}
             ></Route>
-            <Route path="/login" element={<LoginPage />}></Route>
           </Routes>
         </div>
       </BrowserRouter>
+      {/* <Loader /> */}
     </UserContext.Provider>
   );
 }

@@ -11,14 +11,13 @@ export const getCategories = () => {
 };
 
 export const getReviews = (category, sort_by, order) => {
-  let path = "/reviews"
-  if(order) {
-    path += `?order=${order}`
+  let path = "/reviews";
+  if (order) {
+    path += `?order=${order}`;
   }
-  if(sort_by && order) {
-    path += `&sort_by=${sort_by}`
+  if (sort_by && order) {
+    path += `&sort_by=${sort_by}`;
   }
-  
 
   return gamesApi
     .get(path, { params: { limit: 100, category: category } })
@@ -40,9 +39,11 @@ export const getCommentsByReviewId = (review_id) => {
 };
 
 export const patchReviewVotes = (review_id) => {
-  return gamesApi.patch(`/reviews/${review_id}`, { inc_votes:1 }).then((res) => {
-    return res.data.review;
-  });
+  return gamesApi
+    .patch(`/reviews/${review_id}`, { inc_votes: 1 })
+    .then((res) => {
+      return res.data.review;
+    });
 };
 export const postNewComment = (review_id, request) => {
   return gamesApi
