@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import "../header/header.css";
+import Button from "react-bootstrap/Button";
 
 import { UserContext } from "../../userContext";
 const Header = () => {
@@ -24,7 +25,7 @@ const Header = () => {
             <img className="avatarurl" src={user.avatar_url} />
           </div>
         ) : (
-          <button
+          <Button
             className="loginbutton"
             onClick={() => {
               setUser({
@@ -36,7 +37,7 @@ const Header = () => {
             }}
           >
             Log in
-          </button>
+          </Button>
         )}
       </div>
     </div>

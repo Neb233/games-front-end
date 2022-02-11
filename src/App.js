@@ -8,7 +8,7 @@ import NavBar from "./components/Nav/Nav";
 import SingleReview from "./components/single_review/single_review";
 import ReviewList from "./components/review_list/review_list";
 import LoginPage from "./components/login_page";
-
+import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 function App() {
   const [categories, setCategories] = useState([]);
   const [user, setUser] = useState({});
