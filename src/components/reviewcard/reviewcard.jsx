@@ -10,6 +10,17 @@ import dayjs from "dayjs";
 const ReviewCard = ({ review }) => {
   const [votes, setVotes] = useState(review.votes);
 
+  const cardBackGrounds = [
+    "Primary",
+    "Secondary",
+    "Success",
+    "Danger",
+    "Warning",
+    "Info",
+    "Light",
+    "Dark",
+  ];
+
   const onPatch = (review_id) => {
     setVotes((votes) => votes + 1);
     patchReviewVotes(review_id);
@@ -21,22 +32,29 @@ const ReviewCard = ({ review }) => {
     <div className="reviewcontainer">
       <li key={review.title} className="votebox">
         <button
+          className="likebutton"
           onClick={() => {
             onPatch(review.review_id);
           }}
         >
           Like
         </button>
+        <img src={"../../../assets/plusbutton.png"} />
         <h3>{review.votes}</h3>
       </li>
 
-      <Card className="mb-3" border="primary" style={{ color: "#000" }}>
+      <Card
+        className="mb-3"
+        bg="light"
+        border="primary"
+        style={{ color: "#000" }}
+      >
         <Card.Header>Created by: {review.owner}</Card.Header>
         <Card.Img
           src={
             review.review_img_url
               ? review.review_img_url
-              : "../../placeholder.png"
+              : "../../../assets/placeholder.png"
           }
           alt=""
         />
