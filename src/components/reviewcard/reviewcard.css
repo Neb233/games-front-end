@@ -1,0 +1,15 @@
+.buttonimage {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+}
+.likebutton:active {
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+
+.likebutton {
+  background: none;
+  border: none;
+  border-radius: 50%;
+}
