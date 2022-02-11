@@ -1,15 +1,15 @@
 import React from "react";
 import { useParams } from "react-router-dom";
 import { useState, useEffect, useContext } from "react";
-import { UserContext } from "../../userContext";
+import { UserContext } from "../../contexts/userContext";
 import {
   getReviewById,
   getCommentsByReviewId,
   deleteComment,
 } from "../../utils/api";
 import CommentBox from "../commentbox/commentbox";
-import Expandable from "../expandablecomments/expandablecomments"
-import CommentsList from "../comments_list/comments_list"
+import Expandable from "../expandablecomments/expandablecomments";
+import CommentsList from "../comments_list/comments_list";
 import "../single_review/single_review.css";
 const SingleReview = () => {
   const { user, setUser } = useContext(UserContext);
@@ -34,7 +34,6 @@ const SingleReview = () => {
   };
   useEffect(() => {
     getReviewById(review_id).then((review) => {
- 
       setReview(review);
     });
   }, []);
@@ -78,9 +77,7 @@ const SingleReview = () => {
       </div>
       {comments.length === 0 ? <div>Be the first to comment</div> : null}
 
-
       <div>
-        
         <ul className="commentslist">
           {comments.map((comment) => {
             return (
@@ -89,7 +86,6 @@ const SingleReview = () => {
                   <li className="votebox">
                     <button>Like</button>
                     <h3>{comment.votes}</h3>
-                  
                   </li>
 
                   <li key={comment.comment_id} className="commentbox">
@@ -113,9 +109,7 @@ const SingleReview = () => {
             );
           })}
         </ul>
-       
       </div>
-      
     </>
   );
 };

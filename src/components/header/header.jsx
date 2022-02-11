@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import "../header/header.css";
 import Button from "react-bootstrap/Button";
 
-import { UserContext } from "../../userContext";
+import { UserContext } from "../../contexts/userContext";
 const Header = () => {
   const { user, setUser } = useContext(UserContext);
   return (

@@ -1,6 +1,6 @@
 import "../commentbox/commentbox.css";
 import React, { useState, useRef, useContext } from "react";
-import { UserContext } from "../../userContext";
+import { UserContext } from "../../contexts/userContext";
 import cn from "classnames";
 import useDynamicHeightField from "../../utils/useDynamicHeightField";
 import { postNewComment } from "../../utils/api";
@@ -41,7 +41,7 @@ const CommentBox = ({ review, comments, setComments }) => {
     }
     postNewComment(review.review_id, {
       username: user.username,
-      body: commentValue
+      body: commentValue,
     })
       .then((res) => {
         setCommentValue("");
@@ -73,7 +73,7 @@ const CommentBox = ({ review, comments, setComments }) => {
       >
         <div className="header">
           <div className="user">
-            <img src={user.avatar_url} alt="User avatar" />
+            <img src={user.avatar_url} alt="../../assets/greyicon" />
             <span>{user.username}</span>
           </div>
         </div>
