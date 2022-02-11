@@ -13,12 +13,7 @@ const Header = () => {
           <span>NC Games</span>
         </Link>
       </div>
-      <div className="header_middle">
-        <div className="searchbar">
-          {/* <SearchIcon className="searchIcon" /> */}
-          <input placeholder="search reviews..." />
-        </div>
-      </div>
+      <div className="header_middle"></div>
       <div className="header_right">
         {user.username ? (
           <div className="logginInfo">
@@ -27,6 +22,7 @@ const Header = () => {
         ) : (
           <Button
             className="loginbutton"
+            size="sm"
             onClick={() => {
               setUser({
                 username: "grumpy19",

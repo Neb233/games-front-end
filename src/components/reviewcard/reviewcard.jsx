@@ -3,7 +3,9 @@ import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { patchReviewVotes } from "../../utils/api";
 import Button from "react-bootstrap/Button";
+import Card from "react-bootstrap/Card";
 import "../../../node_modules/bootstrap/dist/css/bootstrap.min.css";
+import dayjs from "dayjs";
 
 const ReviewCard = ({ review }) => {
   const [votes, setVotes] = useState(review.votes);
@@ -27,7 +29,30 @@ const ReviewCard = ({ review }) => {
         </button>
         <h3>{review.votes}</h3>
       </li>
-      <div className="col-md-4">
+
+      <Card className="mb-3" border="primary" style={{ color: "#000" }}>
+        <Card.Header>Created by: {review.owner}</Card.Header>
+        <Card.Img
+          src={
+            review.review_img_url
+              ? review.review_img_url
+              : "../../placeholder.png"
+          }
+          alt=""
+        />
+        <Card.Body>
+          <Card.Title>{review.title}</Card.Title>
+          <Card.Text></Card.Text>
+          <Link key={review.review_id} to={`/reviews/${review.review_id}`}>
+            <Button>More info</Button>
+          </Link>
+          <Card.Footer className="text-muted">
+            Created at: {dayjs(review.created_at).format("DD/MM/YYYY HH:mm A")}
+          </Card.Footer>
+        </Card.Body>
+      </Card>
+
+      {/* <div className="col-md-4">
         <li key={review.review_id} className="reviewcard">
           <img
             className="reviewthumbnail"
@@ -48,7 +73,7 @@ const ReviewCard = ({ review }) => {
             </Button>
           </Link>
         </li>
-      </div>
+      </div> */}
     </div>
   );
 };
