@@ -8,9 +8,9 @@ import {
   deleteComment,
 } from "../../utils/api";
 import CommentBox from "../commentbox/commentbox";
-import Expandable from "../expandablecomments/expandablecomments";
 import CommentsList from "../comments_list/comments_list";
 import "../single_review/single_review.css";
+import dayjs from "dayjs";
 const SingleReview = () => {
   const { user, setUser } = useContext(UserContext);
   const { review_id } = useParams();
@@ -44,15 +44,16 @@ const SingleReview = () => {
   }, []);
   return (
     <>
-      <div>
-        <h2 className="reviewtitle">{review.title}</h2>
-      </div>
-
       <div className="reviewbox">
-        <h3>{review.owner}</h3>
-        <h3>{review.designer}</h3>
-        <h3>{review.votes}</h3>
-        <p>{review.review_body}</p>
+        <div className="ownerdesignerbox">
+          <div className="num-display">{review.votes}</div>
+          <p className="reivewowner">Owner: {review.owner}</p>
+        </div>
+        <h2 className="reviewtitle">{review.title}</h2>
+        <p className="reviewbody">{review.review_body}</p>
+
+        <p className="reviewdesigner">Designer: {review.designer}</p>
+
         <img
           className="reviewimage"
           src={
@@ -62,7 +63,10 @@ const SingleReview = () => {
           }
           alt=""
         />
-        <p>{review.created_at}</p>
+        <p>
+          Review created {dayjs(review.created_at).format("DD/MM/YYYY HH:mm A")}
+        </p>
+
         <CommentBox
           review={review}
           comments={comments}
@@ -70,12 +74,14 @@ const SingleReview = () => {
         />
       </div>
       <div>
-        <h2>
+        <h2 className="commentcount">
           <span>{comments.length}</span> Comment
           {comments.length === 1 ? "" : "s"}
         </h2>
       </div>
-      {comments.length === 0 ? <div>Be the first to comment</div> : null}
+      {comments.length === 0 ? (
+        <p className="commentcount">Be the first to comment!</p>
+      ) : null}
 
       <div>
         <ul className="commentslist">

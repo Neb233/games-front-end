@@ -27,15 +27,14 @@ const CommentsList = ({ comments, setComments }) => {
         return (
           <>
             <div className="commentcomponent">
-              <li className="votebox">
-                <button>Like</button>
-                <h3>{comment.votes}</h3>
-              </li>
-
               <li key={comment.comment_id} className="commentbox">
                 <h3>{comment.author}</h3>
                 <p>{comment.body}</p>
                 <p>{comment.created_at}</p>
+              </li>
+              <li className="votebox">
+                <button>Like</button>
+                <h3>{comment.votes}</h3>
                 {comment.author === user.username ? (
                   <button
                     type="button"

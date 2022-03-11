@@ -4,3 +4,53 @@
   border-radius: 10px;
   justify-content: center;
 }
+
+.reviewimage {
+  width: 80%;
+  height: 100%;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+.reviewbox {
+  background-color: white;
+  padding: 10px;
+  margin: 5px;
+  border-radius: 5px;
+}
+
+.reviewowner {
+  font-weight: bold;
+}
+
+.reviewtitle {
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.commentcount {
+  font-weight: bold;
+}
+
+.ownerdesignerbox {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 5px;
+  align-items: center;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+.num-display {
+  top: -10px;
+  left: -10px;
+  width: 50px;
+  height: 50px;
+  background-color: deeppink;
+  color: aliceblue;
+  border-radius: 50%;
+  display: table-cell;
+  font-weight: bold;
+  vertical-align: middle;
+  text-align: center;
+}

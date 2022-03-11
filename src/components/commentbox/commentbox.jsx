@@ -4,6 +4,7 @@ import { UserContext } from "../../contexts/userContext";
 import cn from "classnames";
 import useDynamicHeightField from "../../utils/useDynamicHeightField";
 import { postNewComment } from "../../utils/api";
+import greyicon from "../../assets/greyicon.png";
 
 const INITIAL_HEIGHT = 24;
 
@@ -73,7 +74,10 @@ const CommentBox = ({ review, comments, setComments }) => {
       >
         <div className="header">
           <div className="user">
-            <img src={user.avatar_url} alt="../../assets/greyicon" />
+            <img
+              src={user.avatar_url ? user.avatar_url : greyicon}
+              alt="user icon"
+            />
             <span>{user.username}</span>
           </div>
         </div>
