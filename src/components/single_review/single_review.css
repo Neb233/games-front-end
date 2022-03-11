@@ -30,6 +30,7 @@
 
 .commentcount {
   font-weight: bold;
+  margin: 20px;
 }
 
 .ownerdesignerbox {
@@ -53,4 +54,39 @@
   font-weight: bold;
   vertical-align: middle;
   text-align: center;
+  line-height: 50px;
+}
+
+.footer {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  align-items: center;
+}
+
+.likebox {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.deletebutton {
+  top: -10px;
+  right: -10px;
+}
+.commentbox {
+  color: aliceblue;
+}
+.commentcomponent {
+  padding: 5px;
+}
+.commentheader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  padding: 10px;
+}
+.date {
+  font-size: smaller;
 }

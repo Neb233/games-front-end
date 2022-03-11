@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { useState, UserContext } from "../../contexts/userContext";
 import { deleteComment } from "../../utils/api";
+import dayjs from "dayjs";
 
 const CommentsList = ({ comments, setComments }) => {
   const { user } = useContext(UserContext);
@@ -27,14 +28,17 @@ const CommentsList = ({ comments, setComments }) => {
         return (
           <>
             <div className="commentcomponent">
+              <div className="num-display">{comment.votes}</div>
               <li key={comment.comment_id} className="commentbox">
                 <h3>{comment.author}</h3>
                 <p>{comment.body}</p>
-                <p>{comment.created_at}</p>
+                <p>{dayjs(comment.created_at).format("DD/MM/YYYY HH:mm A")}</p>
               </li>
-              <li className="votebox">
+              <div className="footer">
+                {/* <div className="likebox"> */}
                 <button>Like</button>
-                <h3>{comment.votes}</h3>
+
+                {/* </div> */}
                 {comment.author === user.username ? (
                   <button
                     type="button"
@@ -46,7 +50,7 @@ const CommentsList = ({ comments, setComments }) => {
                     Delete
                   </button>
                 ) : null}
-              </li>
+              </div>
             </div>
           </>
         );

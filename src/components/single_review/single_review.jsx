@@ -47,13 +47,9 @@ const SingleReview = () => {
       <div className="reviewbox">
         <div className="ownerdesignerbox">
           <div className="num-display">{review.votes}</div>
-          <p className="reivewowner">Owner: {review.owner}</p>
+          <p className="reviewowner">Owner: {review.owner}</p>
         </div>
         <h2 className="reviewtitle">{review.title}</h2>
-        <p className="reviewbody">{review.review_body}</p>
-
-        <p className="reviewdesigner">Designer: {review.designer}</p>
-
         <img
           className="reviewimage"
           src={
@@ -63,6 +59,10 @@ const SingleReview = () => {
           }
           alt=""
         />
+        <p className="reviewbody">{review.review_body}</p>
+
+        <p className="reviewdesigner">Designer: {review.designer}</p>
+
         <p>
           Review created {dayjs(review.created_at).format("DD/MM/YYYY HH:mm A")}
         </p>
@@ -89,15 +89,16 @@ const SingleReview = () => {
             return (
               <>
                 <div className="commentcomponent">
-                  <li className="votebox">
-                    <button>Like</button>
-                    <h3>{comment.votes}</h3>
-                  </li>
-
-                  <li key={comment.comment_id} className="commentbox">
+                  <div className="commentheader">
+                    <div className="num-display">{comment.votes}</div>
                     <h3>{comment.author}</h3>
+                  </div>
+                  <li key={comment.comment_id} className="commentbox">
                     <p>{comment.body}</p>
-                    <p>{comment.created_at}</p>
+                  </li>
+                  <div className="footer">
+                    <button>Like</button>
+
                     {comment.author === user.username ? (
                       <button
                         type="button"
@@ -109,7 +110,10 @@ const SingleReview = () => {
                         Delete
                       </button>
                     ) : null}
-                  </li>
+                  </div>
+                  <p className="date">
+                    {dayjs(comment.created_at).format("DD/MM/YYYY HH:mm A")}
+                  </p>
                 </div>
               </>
             );

@@ -4,6 +4,7 @@ import { useSearchParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { getReviews } from "../../utils/api";
 import ReviewCard from "../reviewcard/reviewcard";
+import "../../../src/App.css";
 import "../review_list/review_list.css";
 import LoadingPage from "../loadingpage/loadingpage";
 
