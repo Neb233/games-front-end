@@ -1,6 +1,6 @@
-NC News app
+NC Games app
 
-This is a simple games review feed app where you can see reviews for different categories of game. You can read reviews and vote for them. You can login as a single pre-programmed user using the login button in the top right, which will allow you to comment on any article, and delete your own comment. You can sort article by number of votes or by date of publication.
+This is a simple games review feed app where you can see reviews for different categories of games. You can read reviews and vote for them. You can login as a single pre-programmed user using the login button in the top right, which will allow you to comment on any article, and delete your own comment. You can sort article by number of votes or by date of publication.
 
 System requirements
 You will need to install Node v17.0.1 to run this repository.
