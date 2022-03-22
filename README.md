@@ -1,70 +1,37 @@
-# Getting Started with Create React App
+NC News app
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This is a simple games review feed app where you can see reviews for different categories of game. You can read reviews and vote for them. You can login as a single pre-programmed user using the login button in the top right, which will allow you to comment on any article, and delete your own comment. You can sort article by number of votes or by date of publication.
 
-## Available Scripts
+System requirements
+You will need to install Node v17.0.1 to run this repository.
 
-In the project directory, you can run:
+Cloning the respository
 
-### `npm start`
+If you want to work with this repository locally you will need to clone it onto your local machine. To do this, navigate the folder you want the repository to be saved, and run the following command:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+git clone - https://github.com/Neb233/games-front-end.git
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Installing dependencies
 
-### `npm test`
+This repository makes use of a few other packages that you will need to install before it is able to run locally. You can simply run below command in your terminal which will automatically install all the dependencies:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+npm install
 
-### `npm run build`
+Link
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+An online hosted version of this repository can be found at: https://ben-bartram-portfolio.netlify.app
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+How to test this app -
+You can just navigate through the app and read reviews and comments. You can login as a dummy user by clicking the button in the top-right corner.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+How to test locally -
+If you want to test this app locally, just run command 'npm start' in your command line. You must be in the project directory before you run this command.
 
-### `npm run eject`
+Backend repo
+This project's backend repo can be cloned from here-
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+git clone - https://github.com/Neb233/server-portfolio.git
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+An online hosted version of this backend repository can be found at:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+https://neb233.herokuapp.com/
